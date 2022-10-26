@@ -48,4 +48,25 @@ public class CustomListTest {
         assertTrue( list.hasCity(new City("Same City", "Same Province")) );
     }
 
+    /**
+     * deletes city that has been added to the list
+     */
+    @Test
+    public void deleteAddedCityTest() {
+        list = MockCityList();
+        list.addCity(new City("Delete City", "Delete Province"));
+        list.deleteCity(new City("Delete City", "Delete Province"));
+        assertFalse( list.hasCity(new City("Delete City", "Delete Province")) );
+    }
+
+    /**
+     * deletes city that is not in the list
+     */
+    @Test
+    public void deleteNonExistentCityTest() {
+        list = MockCityList();
+        list.deleteCity(new City("Delete City", "Delete Province"));
+        assertFalse( list.hasCity(new City("Delete City", "Delete Province")) );
+    }
 }
+
