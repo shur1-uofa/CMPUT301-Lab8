@@ -68,5 +68,24 @@ public class CustomListTest {
         list.deleteCity(new City("Delete City", "Delete Province"));
         assertFalse( list.hasCity(new City("Delete City", "Delete Province")) );
     }
+
+    /**
+     * Adds 3 distinct cities that has been added to the list
+     * then checks its count
+     */
+    @Test
+    public void countCityTest() {
+        // There is one "feature". If you add multiple cities of same name, province.
+        // They are counted multiple times. So you can have a list full of basically
+        // the same City objects
+        // I'm gonna say this is a "feature" because the lab's implementation of countCity
+        // doesn't account for this
+        list = MockCityList();
+        list.addCity(new City("City 1", "A"));
+        list.addCity(new City("City 2", "B"));
+        list.addCity(new City("City 3", "C"));
+        assertEquals(3, list.getCount());
+    }
+
 }
 
